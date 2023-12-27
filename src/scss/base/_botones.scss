@@ -1,0 +1,83 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.boton--oculto{
+    display: none;
+}
+
+.boton{
+    display: block;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    background-color: v.$verde_claro;
+    width: 100%;
+    margin: 0 auto;
+    height: 5rem;
+    margin-top: 2rem;
+    cursor: pointer;
+
+    font-size: 2.5rem;
+    color: v.$blanco;
+
+    
+    &:hover{
+        background-color: v.$azul_oscuro;
+        border: solid 2px v.$verde_claro;
+    }
+
+    &:disabled{
+        background-color: v.$gris;
+        color: darken(v.$gris, 50);
+        cursor: default;
+        &:hover{
+            background-color: v.$gris;
+            border: none;
+        }
+    }
+
+}
+
+.boton--noborder{
+    width: 90%;
+    &:hover{
+        border: none;
+        background-color: darken(v.$verde_claro, 10);
+    }
+}
+
+
+.boton--small{
+    display: flex;
+    width: 20rem;
+    
+    margin-bottom: 1rem;
+    padding: 2rem 1rem;
+    height: 2.5rem;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+}
+
+.boton--cuadrado{
+    border-radius: 0;
+}
+
+.boton--rojo{
+    background-color: v.$rojo;
+    &:hover{
+        background-color: darken(v.$rojo, 10);
+    }
+}
+
+.boton--naranja{
+    margin: 0 auto;
+    background-color: v.$naranja;
+    &:hover{
+        background-color: darken(v.$naranja, 10);
+    }
+}
+.boton{
+    
+}

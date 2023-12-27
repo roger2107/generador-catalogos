@@ -1,0 +1,46 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.menu-admin{
+    height: 100vh;
+}
+
+.contenedor-menu{
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 10rem;
+
+    
+    @include m.tablet{
+        @include m.grid(2, 2rem);
+    }
+}
+
+.menu-opcion{
+    
+    width: 100%;
+    background-color: v.$azul_oscuro;
+    display:  flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 1rem;
+
+    padding: 1.5rem 0;
+    cursor: pointer;
+
+    &:hover{
+        background-color: lighten(v.$azul_oscuro, 10);
+    }
+}
+
+.menu-opcion__icono{
+    width: 5rem;
+}
+
+.menu-opcion__texto{
+    margin-left: 1.5rem;
+    color: v.$blanco;
+    font-size: 2.4rem;
+}

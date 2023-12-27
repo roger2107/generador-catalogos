@@ -1,0 +1,60 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.seccion-usuarios{
+    background-color: lighten(v.$azul_oscuro, 10);
+    padding-bottom: 2rem;
+}
+
+.menu-usuarios{
+    display: flex;
+    flex-direction: column;
+    @include m.tablet{
+        flex-direction: row;
+    }
+}
+
+.menu-usuarios__boton{
+    display: flex;
+    flex-direction: row;
+    
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    width: 50%;
+    padding: 1.5rem 2rem;
+
+    @include m.tablet{
+        width: 25%;
+    }
+
+    &:hover{
+        background-color: darken(v.$verde_claro, 10);
+        border: none;
+    }
+}
+
+.menu-usuarios__icono{
+    width: 3.5rem;
+}
+
+.menu-usuarios__texto{
+    font-size: 2.4rem;
+    color: v.$blanco;
+}
+
+.lista-usuarios{
+    width: 80%;
+    margin: 0 auto;
+
+    padding-top: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+//NUEVO USUARIO--------------------------------------------
+
