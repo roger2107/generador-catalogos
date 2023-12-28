@@ -74,7 +74,7 @@
                         <option value="-1" >---SELECCIONA---</option>
                         <option value="0" selected>TODAS</option>
                         <?php while($opcionCategoria = mysqli_fetch_assoc($resultadoCategorias)): ?>
-                            <option  value="<?php echo $opcionCategoria['id']; ?>"><?php echo $opcionCategoria['nombre']; ?></option>
+                            <option <?php echo $idCategoria === $opcionCategoria['id'] ? 'selected' : '' ?>  value="<?php echo $opcionCategoria['id']; ?>"><?php echo $opcionCategoria['nombre']; ?></option>
                         <?php endwhile; ?>
                     </select>
                     
@@ -95,7 +95,7 @@
                         <div class="buscador__elementos--elemento">
                             <label class="buscador__label" for="check-precios">Precios</label>
                             <input type="checkbox" name="precios" id="check-precios" checked>
-                            <input type="hidden" name="inputcategoria" id="input-categoria" value="0">
+                            <input type="hidden" name="inputcategoria" id="input-categoria" value="<?php echo $idCategoria ?>">
                         </div>
                         <div class="buscador__elementos--elemento">
                             <label class="buscador__label" for="select-columnas">Columnas</label>

@@ -24,6 +24,39 @@
     $volver = 'index';
     $agregarElemento = true;
 
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+        $idEliminar = $_POST['id'];
+        $idEliminar = filter_var($idEliminar, FILTER_VALIDATE_INT);
+
+        if($idEliminar){
+
+            //Eliminar el archivo
+            $queryImagen = "SELECT imagen FROM categorias WHERE id = $idEliminar";
+            
+            $resultadoImagen = mysqli_query($db, $queryImagen);
+            $categoria = mysqli_fetch_assoc($resultadoImagen);
+            
+            
+            //exit;
+            //Eliminar la propiedad
+            try{
+                $queryEliminar = "DELETE FROM categorias WHERE id = $idEliminar";
+                $resultadoEliminar=mysqli_query($db, $queryEliminar);
+                unlink('../../imagenes/'.$categoria['imagen']);
+                if($resultadoEliminar){
+                    header('Location: /catalogos-php/admin/elementos/categorias.php?resultado=3');
+                }
+            }catch(Exception $e){
+                
+                header('Location: /catalogos-php/admin/elementos/categorias.php?resultado=4');
+                
+            }
+            
+
+            
+        }
+    }
+
     require '../../includes/funciones.php';
     
     $nombrePagina = 'Categorias';
@@ -38,6 +71,10 @@
             <p class="alerta exito">Guardado Correctamente</p>
             <?php elseif(intval($resultado) === 2): ?>
                 <p class="alerta exito">Actualizado Correctamente</p>
+            <?php elseif(intval($resultado) === 3): ?>
+                <p class="alerta exito">Eliminada Correctamente</p>
+            <?php elseif(intval($resultado) === 4): ?>
+                <p class="alerta error">La categoría tiene productos relacionados, elimine los productos antes de eliminar la categoria</p>
         <?php endif ?>
     </div>
 
@@ -60,13 +97,16 @@
                         <td><img src="/catalogos-php/imagenes/<?php echo $categoria['imagen'] ?>" alt="imagen categoria" class="imagen imagen--medium "></td>
                         <td>
                             <a href="/catalogos-php/admin/elementos/actualizarCategoria.php?id=<?php echo $categoria['id']; ?>" class="boton boton--small boton--cuadrado boton--noborder boton--naranja">Editar</a>
-                            <a href="#" class="boton boton--small boton--cuadrado boton--noborder boton--rojo">Eliminar</a>
+                            <form method="POST">
+                                <input type="hidden" name="id" value="<?php echo $categoria['id'] ?>">
+                                <input type="submit" class="boton boton--small boton--cuadrado boton--noborder boton--rojo" value="Eliminar">
+                            </form>
                         </td>
                     </tr> 
                 <?php endwhile; ?>
             </tbody>  
             
-        </table>
+        </table> 
     </section>
     <script src="/catalogos-php/build/js/app.js"></script>
 </body>

@@ -24,20 +24,24 @@ let inputprueba = document.querySelector('#prueba');
 //BUSCADOR
 let botonBuscarProductos = document.querySelector('#btn-buscar-productos');
 let selectCategoria = document.querySelector('#select-categoria');
-botonBuscarProductos.href="/catalogos-php/admin/elementos/catalogos.php?codigo=1&categoria=-1";
+if(botonBuscarProductos!==null){
+    botonBuscarProductos.href="/catalogos-php/admin/elementos/catalogos.php?codigo=1&categoria=-1";
+}
 
 //INPUT QUE ENVIARA EL VALOR DE LA CATEGORIA AL ARCHIVO QUE CREA EL CATALOGO
 let inputCategoria = document.querySelector('#input-categoria');
 
-selectCategoria.addEventListener('change', ()=>{
-    let seleccion = selectCategoria.value;
-    console.log('valor: ' + seleccion);
-    botonBuscarProductos.href="";
-    botonBuscarProductos.href="/catalogos-php/admin/elementos/catalogos.php?codigo=1&categoria=" + seleccion;
-
-    inputCategoria.value = ''+ seleccion;
-
-})
+if(inputCategoria !== null){
+    selectCategoria.addEventListener('change', ()=>{
+        let seleccion = selectCategoria.value;
+        console.log('valor: ' + seleccion);
+        botonBuscarProductos.href="";
+        botonBuscarProductos.href="/catalogos-php/admin/elementos/catalogos.php?codigo=1&categoria=" + seleccion;
+    
+        inputCategoria.value = ''+ seleccion;
+    
+    })
+}
 
 if(inputIdEmpresa !==null){
     if(inputIdEmpresa.value !== ""){

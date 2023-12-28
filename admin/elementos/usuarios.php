@@ -21,6 +21,21 @@
     $volver = 'index';
     //$agregarElemento = true;
 
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+        $idEliminar = $_POST['id'];
+        $idEliminar = filter_var($idEliminar, FILTER_VALIDATE_INT);
+
+        if($idEliminar){
+
+            $queryEliminar = "DELETE FROM usuarios WHERE id = $idEliminar";
+            $resultadoEliminar=mysqli_query($db, $queryEliminar);
+
+            if($resultadoEliminar){
+                header('Location: /catalogos-php/admin/elementos/usuarios.php?resultado=3');
+            }
+        }
+    }
+
     require '../../includes/funciones.php';
     
     $nombrePagina = 'Usuarios';
@@ -35,6 +50,8 @@
             <p class="alerta exito">Guardado Correctamente</p>
             <?php elseif(intval($resultado) === 2): ?>
                 <p class="alerta exito">Actualizado Correctamente</p>
+            <?php elseif(intval($resultado) === 3): ?>
+                <p class="alerta exito">Eliminado Correctamente</p>
         <?php endif ?>
     </div>
     
@@ -45,6 +62,7 @@
                     <th class="tabla__encabenzados">ID</th>
                     <th class="tabla__encabenzados">NOMBRE</th>
                     <th class="tabla__encabenzados">USUARIO</th>
+                    <th class="tabla__encabenzados">ES ADMIN</th>
                     <th class="tabla__encabenzados">OPCIONES</th>
                 </tr>
             </thead>
@@ -55,9 +73,13 @@
                         <td> <?php echo $usuario['id'] ?> </td>
                         <td><?php echo $usuario['nombre'] ?></td>
                         <td> <?php echo $usuario['username'] ?> </td>
+                        <td> <?php  if($usuario['tipo'] === '1'){echo 'SI';}else{ echo 'NO';} ?> </td>
                         <td>
                             <a href="/catalogos-php/admin/elementos/actualizarUsuario.php?id=<?php echo $usuario['id'] ?>" class="boton boton--small boton--cuadrado boton--noborder boton--naranja">Editar</a>
-                            <a href="#" class="boton boton--small boton--cuadrado boton--noborder boton--rojo">Eliminar</a>
+                            <form method="POST">
+                                <input name="id" type="hidden" value="<?php echo $usuario['id'] ?>">
+                                <input type="submit" class="boton boton--small boton--cuadrado boton--noborder boton--rojo" value="Eliminar">
+                            </form>
                         </td>
                     </tr>
                 <?php endwhile; ?>  
