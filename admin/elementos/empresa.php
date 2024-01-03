@@ -3,6 +3,13 @@
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
+    require '../../includes/funciones.php';
+
+    $auth = estaAutenticado();
+    if(!$auth){
+        header('Location: /catalogos-php/index.php');
+    }
+
     //Database
     require '../../includes/config/database.php';
     $db  = conectarDB();
@@ -189,11 +196,9 @@
     $vistaTabla = true;
     $volver = 'index';
 
-    require '../../includes/funciones.php';
-
     $nombrePagina = 'Datos de la empresa';
     incluirTemplate('header-doc',$agregarElemento=false, $elemento='' , $volver, $nombrePagina);
-    incluirTemplate('header-user');
+    incluirTemplate('header-user', false,'','','',$_SESSION['usuario_username']);
 
     incluirTemplate('barra-menu', $agregarElemento=false, $elemento='' , $volver);
 ?>

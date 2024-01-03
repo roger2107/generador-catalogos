@@ -537,6 +537,25 @@ h5 {
   background-color: #01C38E;
 }
 
+.texto {
+  font-size: 1.8rem;
+  font-weight: 300;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.texto--error {
+  color: rgb(255, 40, 40);
+}
+
+.mensaje-exito {
+  color: #027373;
+}
+
+.login-mensaje-error {
+  color: rgb(255, 40, 40);
+}
+
 .header {
   background-color: #172026;
 }

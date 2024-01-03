@@ -7,6 +7,12 @@
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
     
+    require '../../includes/funciones.php';
+
+    $auth = estaAutenticado();
+    if(!$auth){
+        header('Location: /catalogos-php/index.php');
+    }
     // echo '<pre>';
     // var_dump($_GET);
     // echo '</pre>';
@@ -138,9 +144,9 @@
 
     $volver = 'elementos/productos';
     $nombrePagina = 'Editar Producto';
-    require '../../includes/funciones.php';
+    
     incluirTemplate('header-doc',$agregarElemento=false, $elemento='' , $volver, $nombrePagina);
-    incluirTemplate('header-user');
+    incluirTemplate('header-user', false,'','','',$_SESSION['usuario_username']);
     incluirTemplate('barra-menu', $agregarElemento=false, $elemento='' , $volver, $nombrePagina='');
 
     

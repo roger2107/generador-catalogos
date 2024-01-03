@@ -3,6 +3,13 @@
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
+    require '../../includes/funciones.php';
+
+    $auth = estaAutenticado();
+    if(!$auth){
+        header('Location: /catalogos-php/index.php');
+    }
+
     //Database
     require '../../includes/config/database.php';
     $db  = conectarDB();
@@ -14,9 +21,6 @@
     $imagen = '';
 
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        // echo '<pre>';
-        // var_dump($_POST);
-        // echo '</pre>';
         $nombre = mysqli_real_escape_string($db, $_POST["nombre"]);
         
         $imagen = $_FILES['imagen'];
@@ -69,11 +73,9 @@
 
 
     $volver = 'elementos/categorias';
-
-    require '../../includes/funciones.php';
     
     incluirTemplate('header-doc');
-    incluirTemplate('header-user');
+    incluirTemplate('header-user', false,'','','',$_SESSION['usuario_username']);
     incluirTemplate('barra-menu', $agregarElemento=false, $elemento='' , $volver);
 ?>
     

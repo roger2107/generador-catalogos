@@ -4,6 +4,13 @@
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
 
+    require '../../includes/funciones.php';
+
+    $auth = estaAutenticado();
+    if(!$auth){
+        header('Location: /catalogos-php/index.php');
+    }
+
     //Importar la conexion
     require '../../includes/config/database.php';
     $db  = conectarDB();
@@ -35,12 +42,10 @@
             }
         }
     }
-
-    require '../../includes/funciones.php';
     
     $nombrePagina = 'Usuarios';
     incluirTemplate('header-doc',$agregarElemento, $elemento , $volver, $nombrePagina);
-    incluirTemplate('header-user');
+    incluirTemplate('header-user', false,'','','',$_SESSION['usuario_username']);
 
     incluirTemplate('barra-menu', $agregarElemento, $elemento, $volver);
 ?>

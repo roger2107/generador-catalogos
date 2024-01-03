@@ -1,0 +1,21 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.texto{
+    font-size: 1.8rem;
+    font-weight: 300;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.texto--error{
+    color: v.$rojo;
+}
+
+.mensaje-exito{
+    color: v.$verde_medio;
+}
+
+.login-mensaje-error{
+    color: v.$rojo;
+}

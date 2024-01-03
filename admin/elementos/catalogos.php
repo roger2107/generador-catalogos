@@ -3,6 +3,13 @@
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
+
+    require '../../includes/funciones.php';
+
+    $auth = estaAutenticado();
+    if(!$auth){
+        header('Location: /catalogos-php/index.php');
+    }
     
     //Database
     require '../../includes/config/database.php';
@@ -27,15 +34,15 @@
         //echo $idCategoria;
         if(intval($codigoURL)===1){
             if(intval($idCategoria) !== -1){
-                echo 'categoria valida, id ' . $idCategoria;
+                //echo 'categoria valida, id ' . $idCategoria;
                 if(intval($idCategoria) === 0){
-                    echo 'todas las categorias';
+                    //echo 'todas las categorias';
                     $queryProductos = "SELECT * FROM productos ORDER BY  idcategoria;";
                     echo 'consulta ' . $queryProductos;
                 }else{
-                    echo 'categoria especifica: ' . $idCategoria;
+                    //echo 'categoria especifica: ' . $idCategoria;
                     $queryProductos = "SELECT * FROM productos WHERE idcategoria = $idCategoria ORDER BY  idcategoria;";
-                    echo 'consulta ' . $queryProductos;
+                    //echo 'consulta ' . $queryProductos;
                 }
                 $resultadoConsultaProductos = mysqli_query($db, $queryProductos);
             }
@@ -51,13 +58,11 @@
 
     $vistaTabla = true;
     $volver = 'index';
-
-    require '../../includes/funciones.php';
     
 
     $nombrePagina = 'Genera Catalogo';
     incluirTemplate('header-doc',$agregarElemento=false, $elemento='' , $volver, $nombrePagina);
-    incluirTemplate('header-user');
+    incluirTemplate('header-user', false,'','','',$_SESSION['usuario_username']);
 
     incluirTemplate('barra-menu', $agregarElemento=false, $elemento='' , $volver);
     

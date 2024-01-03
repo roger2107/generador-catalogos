@@ -4,6 +4,13 @@
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
 
+    require '../../includes/funciones.php';
+
+    $auth = estaAutenticado();
+    if(!$auth){
+        header('Location: /catalogos-php/index.php');
+    }
+
     $id= $_GET['id'];
     $id = filter_var($id, FILTER_VALIDATE_INT);
 
@@ -106,9 +113,9 @@
     //incluirTemplate('header-doc');
     $volver = 'elementos/categorias';
     $nombrePagina = 'Editar Categoria';
-    require '../../includes/funciones.php';
+    
     incluirTemplate('header-doc',$agregarElemento=false, $elemento='' , $volver, $nombrePagina);
-    incluirTemplate('header-user');
+    incluirTemplate('header-user', false,'','','',$_SESSION['usuario_username']);
     incluirTemplate('barra-menu', $agregarElemento=false, $elemento='' , $volver);
 ?>
     

@@ -3,6 +3,12 @@
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
+    require '../../includes/funciones.php';
+
+    $auth = estaAutenticado();
+    if(!$auth){
+        header('Location: /catalogos-php/index.php');
+    }
     //Database
     require '../../includes/config/database.php';
     $db  = conectarDB();
@@ -40,14 +46,14 @@
         if( $tipo === ""){
             $errores[] = 'EL CAMPO TIPO USUARIO ES NECESARIO';
         }
-        
+        $passwordHash = password_hash($password, PASSWORD_BCRYPT);
         // echo '<pre>';
         // var_dump($errores);
         // echo '</pre>';
 
         //Revisar que el arreglo de errores esté vacio
         if(empty($errores)){
-            $query = "INSERT INTO usuarios (nombre, username, password, tipo) VALUES ( '$nombre' , '$username' , '$password' , '$tipo' )";
+            $query = "INSERT INTO usuarios (nombre, username, password, tipo) VALUES ( '$nombre' , '$username' , '$passwordHash' , '$tipo' )";
             //echo $query;
             $resultado = mysqli_query($db, $query);
 
@@ -65,9 +71,9 @@
 
     $volver = 'elementos/usuarios';
     $nombrePagina = 'Nuevo Usuario';
-    require '../../includes/funciones.php';
+    
     incluirTemplate('header-doc',$agregarElemento=false, $elemento='' , $volver, $nombrePagina);
-    incluirTemplate('header-user');
+    incluirTemplate('header-user', false,'','','',$_SESSION['usuario_username']);
     incluirTemplate('barra-menu', $agregarElemento=false, $elemento='' , $volver, $nombrePagina='');
     
 ?>
