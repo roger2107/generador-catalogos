@@ -13,6 +13,9 @@
     if(!$auth){
         header('Location: /catalogos-php/index.php');
     }
+    if(intval($_SESSION['usuario_tipo']) === 0){
+        header('Location: /catalogos-php/admin/index.php');
+    }
     // echo '<pre>';
     // var_dump($_GET);
     // echo '</pre>';

@@ -10,6 +10,9 @@
     if(!$auth){
         header('Location: /catalogos-php/index.php');
     }
+    if(intval($_SESSION['usuario_tipo']) === 0){
+        header('Location: /catalogos-php/admin/index.php');
+    }
 
     //Importar la conexion
     require '../../includes/config/database.php';
