@@ -79,11 +79,11 @@
             <form class="formulario formulario--login" method="POST">
                 <fieldset class="formulario__campos">
                     <!-- <legend>Inicia Sesión</legend> -->
-                    <div class="contendor-campo">
+                    <div class="contendor-campo contendor-campo__login">
                         <label class="label-login" for="usuario">Usuario</label>
                         <input type="text" name="username" required>
                     </div>
-                    <div class="contendor-campo">
+                    <div class="contendor-campo contendor-campo__login">
                         <label class="label-login" for="usuario">Contraseña</label>
                         <input type="password" name="password" id="" required>
                     </div>

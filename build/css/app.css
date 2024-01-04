@@ -419,6 +419,10 @@ h5 {
   display: none;
 }
 
+.oculto {
+  display: none;
+}
+
 .boton--oculto {
   display: none;
 }
@@ -611,6 +615,19 @@ h5 {
 
 .label-login {
   color: #fff;
+}
+
+.contendor-campo__login {
+  display: flex;
+  flex-direction: column;
+}
+.contendor-campo__login label {
+  margin-top: 1rem;
+  font-size: 2.4rem;
+}
+.contendor-campo__login input[type=text], .contendor-campo__login input[type=password] {
+  height: 3rem;
+  font-size: 2.4rem;
 }
 
 .menu-admin {

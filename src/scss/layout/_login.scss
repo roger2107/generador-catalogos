@@ -40,3 +40,18 @@
 .label-login{
     color: v.$blanco;
 }
+
+.contendor-campo__login{
+    display: flex;
+    flex-direction: column;
+
+    label{
+        margin-top: 1rem;
+        font-size: 2.4rem;
+    }
+
+    input[type="text"], input[type="password"]{
+        height: 3rem;
+        font-size: 2.4rem;
+    }
+}
