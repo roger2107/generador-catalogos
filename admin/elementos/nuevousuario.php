@@ -32,6 +32,15 @@
         $password = mysqli_real_escape_string($db, $_POST["password"]);
         $tipo = mysqli_real_escape_string($db, $_POST["tipo"]);
 
+        //CONSULTAR SI YA EXISTE UN USUARIO CON EL MISMO USERNAME
+        $consultaUsername = "SELECT * FROM usuarios WHERE username = '$username' ;";
+        //var_dump($consultaUsername);
+        $resultadoUsername = mysqli_query($db, $consultaUsername);
+       // echo '<pre>';
+        //var_dump($resultadoUsername->num_rows);
+        //echo '</pre>';
+        //exit;
+
         // echo '<pre>';
         // var_dump($_POST);
         // echo '</pre>';
@@ -42,6 +51,9 @@
         }
         if(strlen($username) < 4 || strlen($username) >10){
             $errores[] = 'EL CAMPO USERNAME DEBE TENER ENTRE 4 Y 10 CARACTERES';
+        }
+        if($resultadoUsername->num_rows !==0){
+            $errores[] = 'EL USERNAME YA SE ENCUENTRA EN USO, INTENTE UNO DIFERENTE';
         }
         if(strlen($password) < 5 || strlen($password) >10){
             $errores[] = 'EL CAMPO CONTRASEÑA DEBE TENER ENTRE 4 Y 10 CARACTERES';
