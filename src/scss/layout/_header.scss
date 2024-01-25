@@ -1,0 +1,28 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.header{
+    background-color: v.$azul_oscuro;
+
+}
+
+.contenedor-header{
+    padding: 2rem;
+    padding-bottom: 2rem;
+}
+
+.datos-usuario{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    p{
+        color: v.$blanco;
+        font-size: 2rem;
+        font-weight: 300;
+    }
+}
+
+.nombre-usuario{
+    font-weight: 500;
+}

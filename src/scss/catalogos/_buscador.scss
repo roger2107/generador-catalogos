@@ -1,0 +1,56 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.buscador{
+    width: 90%;
+    legend{
+        margin-top: 1.5rem;
+        font-size: 2rem;
+    }
+}
+
+.buscador__label{
+    font-size: 2rem;
+    margin-right: 1rem;
+}
+
+.buscador__elementos{
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include m.desktop{
+        flex-direction: row;
+        justify-content: space-around;
+    }
+}
+.select-columnas{
+    width: 40%;
+}
+.buscador__elementos--elemento{
+    display: flex;
+    flex-direction: row;
+    //justify-content: space-evenly;
+    align-items: center;
+    width: 60%;
+    @include m.desktop{
+        justify-content: space-evenly;
+        width: 90%;
+        .select-categoria{
+            width: 70%;
+        }
+        
+    }
+}
+
+.btn-buscador{
+    width: 80%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center;
+    justify-content: center;
+    @include m.desktop{
+        width: auto;
+    }
+}

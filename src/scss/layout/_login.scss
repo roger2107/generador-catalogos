@@ -1,0 +1,57 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.seccion-login{
+    height: 100vh;
+    background-color: v.$verde_claro;
+    padding-top: 15rem;
+}
+
+.contenedor-formulario{
+    background-color: v.$azul_oscuro;
+    width: 40%;
+    margin: 0 auto;
+    
+    padding: 5rem 1rem;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 2px 0px 20px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 2px 0px 20px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 0px 20px 0px rgba(0,0,0,0.75);
+}
+
+
+
+.icono-login{
+    width: 10rem;
+    margin-top: -10rem;
+    background-color: v.$azul_oscuro;
+    padding: 2rem;
+    border-radius: 50%;
+
+    
+}
+
+.label-login{
+    color: v.$blanco;
+}
+
+.contendor-campo__login{
+    display: flex;
+    flex-direction: column;
+
+    label{
+        margin-top: 1rem;
+        font-size: 2.4rem;
+    }
+
+    input[type="text"], input[type="password"]{
+        height: 3rem;
+        font-size: 2.4rem;
+    }
+}

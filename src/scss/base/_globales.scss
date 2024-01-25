@@ -1,0 +1,121 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+html{
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after{
+    box-sizing: inherit;
+}
+
+body{
+    font-family: v.$fuente_principal;
+    font-size: 1.6rem;
+}
+
+p{
+    font-size: 2rem;
+    color: v.$negro;
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    text-decoration: none;
+    color: v.$negro;
+}
+
+h1, h2, h3, h4, h5{
+    margin: 0 0 2rem 0;
+}
+
+h1{
+    font-size: 4rem;
+}
+
+h2{
+    font-size: 3.6rem;
+}
+
+h3{
+    font-size: 3.2rem;
+}
+
+h4{
+    font-size: 3rem;
+}
+
+h5{
+    font-size: 2.8rem;
+}
+
+.contenedor{
+    width: 90%;
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+.imagen-small{
+    width: 5rem;
+}
+
+.imagen--medium{
+    width: 10rem;
+}
+
+.imagen--big{
+    width: 20rem;
+}
+
+.imagen--negativo{
+    filter: invert(1);
+}
+
+
+.tabla{
+    width: 100%;
+    border: solid 2px v.$gris;
+    border-collapse: collapse;
+    th,td{
+        border: solid 2px v.$gris;
+        border-collapse: collapse;
+        
+    }
+    td{
+        text-align: center;
+        margin: 1rem;
+        font-size: 1.8rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        
+    } 
+}
+
+.tabla__encabenzados{
+    background-color: v.$gris;
+    border: none;
+}
+
+.contenedor--horizontal{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.contenedor--vertical{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.opacidad-0{
+    display: none;
+}
+
+.oculto{
+    display: none;
+}
+

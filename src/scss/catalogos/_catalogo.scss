@@ -1,0 +1,122 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.seccion-design{
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    box-shadow: 1px 3px 9px -3px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 1px 3px 9px -3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 3px 9px -3px rgba(0,0,0,0.75);
+}
+
+.contenedor-design{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.design__design{
+    gap: 6rem;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    select{
+        width: 10rem;
+    }
+}
+
+.contenedor-campo--design{
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    select{
+        margin-bottom: 0;
+    }
+}
+
+//CATALOGO
+.catalogo{
+    background-color: v.$blanco;
+}
+.contenedor-productos{
+    background-color: v.$blanco;
+    width: 90%;
+    margin: 0rem auto;
+    margin-top: 5rem;
+}
+
+.card-producto{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.card-producto__nombre{
+    width: 100%;
+
+    background-color: v.$azul_oscuro;
+    font-size: 2.4rem;
+    font-weight: 500;
+    color: v.$blanco;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.card-producto__imagen{
+    height: 15rem;
+    margin-bottom: 1rem
+}
+
+.card-producto__descripcion{
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.card-producto__descripcion--precio{
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.boton-generador{
+    width: 100%;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+
+//MODIFICADORES------------------------------------
+.borde{
+    border: solid 2px v.$azul_oscuro;
+}
+
+.no-borde{
+    border: none;
+}
+
+.sombra{
+    box-shadow: 1px 3px 9px -3px rgba(0,0,0,0.44);
+    -webkit-box-shadow: 1px 3px 9px -3px rgba(0,0,0,0.44);
+    -moz-box-shadow: 1px 3px 9px -3px rgba(0,0,0,0.44);
+}
+
+.grid-2col{
+    @include m.grid(2, 2rem);
+}
+
+.grid-3col{
+    @include m.grid(3, 2rem);
+}
+
+.grid-4col{
+    @include m.grid(4, 2rem);
+}
+
